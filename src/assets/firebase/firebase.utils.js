@@ -40,6 +40,21 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
+  // firestore will give us a objref no matter what, even if the object does not exist.
+  const collectionRef = firestore.collection(collectionKey);
+
+  // move local data to firebase
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

@@ -9,6 +9,7 @@ import { selectCurrentUser } from "../../redux/user/user.selector";
 import { selectCartHidden } from "../../redux/cart/cart.selector";
 import {
   HeaderContainer,
+  HeaderTitle,
   LogoContainer,
   LogoIcon,
   OptionLink,
@@ -21,6 +22,7 @@ const Header = ({ currentUser, hidden }) => {
       <LogoContainer to="/">
         <LogoIcon />
       </LogoContainer>
+      <HeaderTitle>OUTDOOR PRO</HeaderTitle>
       <OptionsContainer>
         <OptionLink to="/shop">SHOP</OptionLink>
         <OptionLink to="/contact">CONTACT</OptionLink>

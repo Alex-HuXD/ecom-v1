@@ -37,3 +37,14 @@ export const OptionLink = styled(Link)`
   font-weight: bold;
   cursor: pointer;
 `;
+
+export const HeaderTitle = styled.div`
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0.6rem 0;
+
+  @media (max-width: 690px) {
+    display: none;
+  }
+`;
