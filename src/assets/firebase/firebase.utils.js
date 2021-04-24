@@ -40,11 +40,28 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  return transformedCollection.reduce((acc, collection) => {
+    acc[collection.title.toLowerCase()] = collection;
+    return acc;
+  }, {});
+};
+
+// helper function that moves front-end data to firebase
 export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
   // firestore will give us a objref no matter what, even if the object does not exist.
   const collectionRef = firestore.collection(collectionKey);
-
-  // move local data to firebase
 
   const batch = firestore.batch();
   objectsToAdd.forEach((obj) => {
