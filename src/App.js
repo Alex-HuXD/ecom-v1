@@ -13,6 +13,7 @@ import CheckoutPage from "./pages/checkout-page/CheckoutPage";
 import { auth, createUserProfileDoc } from "./assets/firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selector";
+import Footer from "./components/footer/Footer";
 
 class App extends React.Component {
   unsubscribedFromAuth = null;
@@ -61,6 +62,7 @@ class App extends React.Component {
             }
           />
         </Switch>
+        <Footer />
       </div>
     );
   }
